@@ -31,10 +31,13 @@ if ($actionPost != "login")
         "user_message" => "Error",
         "internal_message" => "action is not login."
     );
+    http_response_code(400);
+    header('Content-Type: application/json');
+    $conn->close(); 
     exit(json_encode($response));
 }
 
-$sql = "(SELECT user_name, hash_salt FROM student where user_name='$usernamePost')";
+$sql = "(SELECT * FROM student where user_name='$usernamePost')";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) 
@@ -54,7 +57,10 @@ if ($result->num_rows > 0)
         "status" => "success",
         "items" => $items
     );  
-    echo(json_encode($response))."<br/>";
+    http_response_code(200);
+    header('Content-Type: application/json');
+    $conn->close(); 
+    exit(json_encode($response));
 }
 else
 {
@@ -65,6 +71,9 @@ else
         "user_message" => "Error",
         "internal_message" => "Username/password not found in database."
     );
+    http_response_code(401);
+    header('Content-Type: application/json');
+    $conn->close(); 
     exit(json_encode($response));
 }
 
