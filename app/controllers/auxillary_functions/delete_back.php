@@ -8,7 +8,7 @@ function delete_sql($tablename, $primary_key)
 {
 
 	
-	$configs = include('../config.php'); 
+	$configs = require('../config.php'); 
 
 	$servername =   $configs['servername'];
 	$dbusername =   $configs['dbusername'];

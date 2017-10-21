@@ -7,7 +7,7 @@ error_reporting(-1);
 function edit_sql($tablename, $primary_key, $table_field_array)
 {
 	
-	$configs = include('../config.php'); 
+	$configs = require('../config.php'); 
 
 	$servername =   $configs['servername'];
 	$dbusername =   $configs['dbusername'];
@@ -22,20 +22,15 @@ function edit_sql($tablename, $primary_key, $table_field_array)
  	   die("Connection failed: " . $conn->connect_error);
 	} 
 
-	/*
-	$comma_separated_keys = "";
-	$comma_separated_values = "";
-	*/
-
 	$comma_separated_key_val = "";
 
 	$keys_array = array_keys($table_field_array);
 
 	for($i=0; $i < count($keys_array); $i++) 
 	{
-		$comma_separated_key_val .= $keys_array[$i];
+		$comma_separated_key_val .= mysqli_real_escape_string($conn,$keys_array[$i]);
 		$comma_separated_key_val .= "=\"";
-		$comma_separated_key_val .=$table_field_array[$keys_array[$i]];
+		$comma_separated_key_val .=mysqli_real_escape_string($conn,$table_field_array[$keys_array[$i]]);
 		$comma_separated_key_val .= "\", ";
 	}
 

@@ -7,7 +7,7 @@ error_reporting(-1);
 function list_sql($tablename, $order, $order_by, $table_field_array)
 {
 	
-	$configs = include('../config.php'); 
+	$configs = require('../config.php'); 
 
 	$servername =   $configs['servername'];
 	$dbusername =   $configs['dbusername'];
@@ -28,9 +28,9 @@ function list_sql($tablename, $order, $order_by, $table_field_array)
 
 	for($i=0; $i < count($keys_array); $i++) 
 	{
-		$comma_separated_filter .= $keys_array[$i];
+		$comma_separated_filter .= mysqli_real_escape_string($conn,$keys_array[$i]);
 		$comma_separated_filter .= "=\"";
-		$comma_separated_filter .=$table_field_array[$keys_array[$i]];
+		$comma_separated_filter .=mysqli_real_escape_string($conn,$table_field_array[$keys_array[$i]]);
 		$comma_separated_filter .= "\"";
 		if($i < (count($keys_array) - 1) and (count($keys_array)>1) )
 		{

@@ -30,10 +30,10 @@ function insert_sql($tablename, $table_field_array)
 
 	for($i=0; $i < count($keys_array); $i++) 
 	{
-		$comma_separated_keys 	.= $keys_array[$i];
+		$comma_separated_keys 	.= mysqli_real_escape_string($conn, $keys_array[$i]);
 		$comma_separated_keys 	.= ", ";
 		$comma_separated_values	.="\"";
-		$comma_separated_values	.= $table_field_array[$keys_array[$i]];
+		$comma_separated_values	.= mysqli_real_escape_string($conn, $table_field_array[$keys_array[$i]]);
 		$comma_separated_values	.= "\", ";
 	}
 

@@ -30,7 +30,6 @@ $insert_array= array(
 	);
 insert_sql($table_name, $insert_array);
 
-
 function insert_sql($tablename, $table_field_array)
 {
 	$configs = include('config.php'); 
@@ -52,20 +51,20 @@ function insert_sql($tablename, $table_field_array)
 	$comma_separated_values = "";
 
 	$keys_array = array_keys($table_field_array);
-
-	for($i=0; $i < count($keys_array); $i++) 
+	
+		for($i=0; $i < count($keys_array); $i++) 
 	{
-		$comma_separated_keys 	.= $keys_array[$i];
+		$comma_separated_keys 	.= mysqli_real_escape_string($conn, $keys_array[$i]);
 		$comma_separated_keys 	.= ", ";
 		$comma_separated_values	.="\"";
-		$comma_separated_values	.= $table_field_array[$keys_array[$i]];
+		$comma_separated_values	.= mysqli_real_escape_string($conn, $table_field_array[$keys_array[$i]]);
 		$comma_separated_values	.= "\", ";
 	}
 
 	$comma_separated_keys=trim($comma_separated_keys,", ");
 	$comma_separated_values=trim($comma_separated_values,", ");
 	
-
+	
 	$sql_query = "INSERT INTO " .$tablename. " ($comma_separated_keys) VALUES ($comma_separated_values);";
 	
 	if (mysqli_query($conn, $sql_query)) 
@@ -112,7 +111,8 @@ function insert_sql($tablename, $table_field_array)
 	
 	$conn->close();
 	echo json_encode($response);	
-	echo "<br>\r\n";
+	//echo "<br>\r\n";
 }
+
 
 ?>
