@@ -31,7 +31,7 @@ if ($actionPost != "login")
         "action" => "login",
         "status" => "error",
         "user_message" => "Error",
-        "internal_message" => "action is not login."
+        "internal_message" => "professor_back.php action is not login."
     );
     http_response_code(400);
     header('Content-Type: application/json');
@@ -72,7 +72,7 @@ else
         "action" => "login",
         "status" => "error",
         "user_message" => "Error",
-        "internal_message" => "Username/password not found in database."
+        "internal_message" => "professor_back.php Username/password not found in database."
     );
     http_response_code(401);
     header('Content-Type: application/json');

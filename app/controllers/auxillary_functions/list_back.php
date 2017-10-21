@@ -83,7 +83,7 @@ function list_sql($tablename, $order, $order_by, $table_field_array)
     		"action" => "List",
     		"status" => "error" ,
     		"user_message" => "Database error",
-    		"internal_message" => "Failed to list from ".$tablename. " table"
+    		"internal_message" => "list_back.php Failed to list from ".$tablename. " table and sql error is " . mysqli_error($conn)
     	);
     	http_response_code(400);
     	header('Content-Type: application/json');

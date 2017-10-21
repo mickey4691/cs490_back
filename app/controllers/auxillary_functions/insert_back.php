@@ -78,7 +78,7 @@ function insert_sql($tablename, $table_field_array)
     		"action" => "insert",
     		"status" => "error" ,
     		"user_message" => "Database error",
-    		"internal_message" => "New record failed to insert to ".$tablename. " table"
+    		"internal_message" => "insert_back.php New record failed to insert to ".$tablename. " table and sql error is " . mysqli_error($conn)
     	);
     	http_response_code(400);
     	header('Content-Type: application/json');

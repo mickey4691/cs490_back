@@ -26,10 +26,10 @@ if ($result = $conn->query("SHOW TABLES LIKE '".$table_name."'"))
     else //create table if does not exist
     {
         $sql = "CREATE TABLE ". $table_name ." (
-        professor_id INT(6) NOT NULL AUTO_INCREMENT, 
-        user_name VARCHAR(255) NOT NULL,
+        primary_key INT(6) NOT NULL AUTO_INCREMENT, 
+        user_name VARCHAR(255) NOT NULL UNIQUE,
         hash_salt VARCHAR(255) NOT NULL,
-        PRIMARY KEY ( professor_id )
+        PRIMARY KEY ( primary_key )
         )";
 
         if ($conn->query($sql) === TRUE) 

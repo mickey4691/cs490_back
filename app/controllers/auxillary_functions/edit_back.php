@@ -72,6 +72,18 @@ function edit_sql($tablename, $primary_key, $table_field_array)
     		http_response_code(200);
     		header('Content-Type: application/json');
     	}
+    	else
+    	{
+    		$response = array
+			(
+	    		"action" => "edit",
+	    		"status" => "error" ,
+	    		"user_message" => "No Record(s) found.",
+	    		"internal_message" => "edit_back.php Failed to edit from ".$tablename. " table"
+	    	);
+	    	http_response_code(400);
+	    	header('Content-Type: application/json');
+    	}
 	}
 	else
 	{
@@ -80,7 +92,7 @@ function edit_sql($tablename, $primary_key, $table_field_array)
     		"action" => "edit",
     		"status" => "error" ,
     		"user_message" => "Database error",
-    		"internal_message" => "Failed to edit from ".$tablename. " table"
+    		"internal_message" => "edit_back.php Failed to edit from ".$tablename. " table and sql error is " . mysqli_error($conn)
     	);
     	http_response_code(400);
     	header('Content-Type: application/json');

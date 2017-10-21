@@ -26,14 +26,14 @@ if ($result = $conn->query("SHOW TABLES LIKE '".$table_name."'"))
     else //create table
     {
         $sql = "CREATE TABLE ". $table_name ." (
-        test_id INT(6) NOT NULL AUTO_INCREMENT, 
-        professor_id INT(6),
+        primary_key INT(6) NOT NULL AUTO_INCREMENT, 
+        professor_id INT(6) NOT NULL,
         scores_released TINYINT(1) DEFAULT 0,
         finalized TINYINT(1) DEFAULT 0,
         start_date DATETIME, 
         end_date DATETIME,
-        PRIMARY KEY ( test_id ),
-        FOREIGN KEY (professor_id) REFERENCES professor(professor_id)
+        PRIMARY KEY ( primary_key ),
+        FOREIGN KEY (professor_id) REFERENCES professor(primary_key)
         )";
 
         if ($conn->query($sql) === TRUE) 

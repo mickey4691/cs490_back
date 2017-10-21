@@ -47,7 +47,7 @@ function delete_sql($tablename, $primary_key)
     		"action" => "delete",
     		"status" => "error" ,
     		"user_message" => "Record to be deleted not found",
-    		"internal_message" => "Record for primary_key=" .$primary_key. " does not exist in ".$tablename. " table"
+    		"internal_message" => "delete_back.php Record for primary_key=" .$primary_key. " does not exist in ".$tablename. " table. If there's an sql error, it will follow the three dots ... " . mysqli_error($conn)
     	);
     	http_response_code(400);
     	header('Content-Type: application/json');
