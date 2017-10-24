@@ -111,7 +111,7 @@ function insert_sql($tablename, $table_field_array)
 	
 	$conn->close();
 	echo json_encode($response);	
-	//echo "<br>\r\n";
+	echo "<br>\r\n";
 }
 
 

@@ -90,8 +90,9 @@ $sql_query_7 = "CREATE TABLE ". $table_name ." (
         question_id INT(6) NOT NULL, 
         test_id INT(6) NOT NULL, 
         student_id INT(6) NOT NULL, 
+        question_text VARCHAR(65535) NOT NULL,
         answer_text VARCHAR(65535) NOT NULL, 
-        grade INT NOT NULL, 
+        grade INT NOT NULL DEFAULT 0, 
         notes VARCHAR(65535),
         PRIMARY KEY ( primary_key ),
         FOREIGN KEY (question_id) REFERENCES question(primary_key),
@@ -102,10 +103,13 @@ create_table($conn, $table_name, $sql_query_7);
 
 $table_name = "test_score";
 $sql_query_8 = "CREATE TABLE ". $table_name ." (
-        primary_key INT(6) NOT NULL AUTO_INCREMENT, 
+        primary_key INT(6) NOT NULL AUTO_INCREMENT,         
         test_id INT(6) NOT NULL, 
+        test_name VARCHAR(255) NOT NULL,
         student_id INT(6) NOT NULL, 
-        grade INT NOT NULL,
+        student_name VARCHAR(255) NOT NULL UNIQUE,
+        grade INT NOT NULL DEFAULT 0,
+        scores_released TINYINT(1) DEFAULT 0,
         PRIMARY KEY ( primary_key ),
         FOREIGN KEY (test_id) REFERENCES test(primary_key),
         FOREIGN KEY (student_id) REFERENCES student(primary_key)

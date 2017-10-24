@@ -7,6 +7,7 @@ error_reporting(-1);
 
 
 $time = time();
+
 $BACKEND_ENDPOINTS = "https://web.njit.edu/~ps592/cs_490/app/controllers/request/request_parse_back.php";
 
 $error_count = 0;
@@ -17,13 +18,13 @@ $time = time();
 echo "<h1>INSERT TEST:</h1><br/>\r\n";
 $insertJsonPayloads = array(
     "question" => '{"action":"insert", "table_name":"question", "fields":{"question_text":"DummyQuestion' . $time . '", "func_name":"My dumb test function", "param_names":"7, 6, 5, 4, 3"}}',
-    "test_case" => '{"action":"insert", "table_name":"test_case", "fields":{"question_id":10,"input":"DummyTestCase' . $time .'", "output":"output_val goes here, or more, ##"}}',
+    "test_case" => '{"action":"insert", "table_name":"test_case", "fields":{"question_id":1,"input":"DummyTestCase' . $time .'", "output":"output_val goes here, or more, ##"}}',
     "student" => '{"action":"insert", "table_name":"student", "fields":{"user_name":"DummyStudent' . $time .'", "hash_salt":"$2y$10$BBp8BHUg9rfwFrOqLLeMY.c0SimhUAyW3J8K3.qwY500lcnT1ccPGEND"}}',
     "professor" => '{"action":"insert", "table_name":"professor", "fields":{"user_name":"DummyProf' . $time .'", "hash_salt":"$2y$10$BBp8BHUg9rfwFrOqLLeMY.c0SimhUAyW3J8K3.qwY500lcnT1ccPGEND"}}',
-    "test" => '{"action":"insert", "table_name":"test", "fields":{"professor_id":99,"scores_released":0,"finalized":0}}',
-    "question_answer" => '{"action":"insert", "table_name":"question_answer", "fields":{"question_id":5,"test_id":37,"student_id":6,"answer_text":"DummyQuestionAnswer' . $time . '","grade":100,"notes":"lorem ipsum"}}',
-    "test_question" => '{"action":"insert", "table_name":"test_question", "fields":{"test_id":37,"question_id":5}}',
-    "test_score" => '{"action":"insert", "table_name":"test_score", "fields":{"student_id":6,"test_id":35,"grade":100}}',
+    "test" => '{"action":"insert", "table_name":"test", "fields":{"professor_id":1,"scores_released":0,"finalized":0}}',
+    "question_answer" => '{"action":"insert", "table_name":"question_answer", "fields":{"question_id":1,"test_id":1,"student_id":1,"answer_text":"DummyQuestionAnswer' . $time . '","grade":100,"notes":"lorem ipsum"}}',
+    "test_question" => '{"action":"insert", "table_name":"test_question", "fields":{"test_id":1,"question_id":5}}',
+    "test_score" => '{"action":"insert", "table_name":"test_score", "fields":{"student_id":1,"test_id":1,"test_name":"cs490_final","grade":100}}',
 );
 $insertedItems = array();
 $keysArray = array_keys($insertJsonPayloads);
