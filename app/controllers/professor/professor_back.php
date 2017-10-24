@@ -3,7 +3,12 @@
 /*
 **Author: Mickey P. Somra
 **Last Upated: 10/23/2017
-**Purpose: This php script is meant to return a hashed password for a specific professor via user_name. The hashed password is stored in the NJIT's SQL database under the professor table. This script will receive two post requests. One that is an action which should be login and the other is the professor user_name. The script will then query the database for the student user_name and return the primary key, username and hashed password. 
+**Purpose: This php script is meant to return a hashed password for a specific
+professor via user_name. The hashed password is stored in the NJIT's SQL database
+under the professor table. This script will receive two post requests. 
+One that is an action which should be login and the other is the professor
+user_name. The script will then query the database for the student 
+user_name and return the primary key, username and hashed password. 
 */
 
 //Error Message for debugging
@@ -27,7 +32,8 @@ $conn = new mysqli($servername, $dbusername, $password, $dbname);
 // Check connection
 if ($conn->connect_error) 
 {
-     //If there is a connection error, the script will terminate and return the error message from the database 
+     //If there is a connection error, the script will 
+    //terminate and return the error message from the database 
     die("Connection failed: " . $conn->connect_error);
 } 
 
@@ -48,7 +54,8 @@ if ($actionPost != "login")
     http_response_code(400); //bad request
     header('Content-Type: application/json');
     $conn->close();  //Closing the db connection
-    //Since the incorrect POST was passed, an error messaged will be display in JSON format and the script will terminate.
+    //Since the incorrect POST was passed, 
+    //an error messaged will be display in JSON format and the script will terminate.
     exit(json_encode($response));
 }
 
@@ -77,7 +84,9 @@ if ($result->num_rows > 0)
     http_response_code(200); //Good request
     header('Content-Type: application/json');
     $conn->close();  //Closing the db connection
-    //Since the db was able to return a row, a successful message will be display in JSON format with the entire row that was queried and the script will terminate.
+    //Since the db was able to return a row, a successful 
+    //message will be display in JSON format with the entire row 
+    //that was queried and the script will terminate.
     exit(json_encode($response)); 
 }
 

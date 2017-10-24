@@ -3,7 +3,10 @@
 /*
 **Author: Mickey P. Somra
 **Last Upated: 10/23/2017
-**Purpose: This php script is meant to querying the database and delete an existing row based on the primary_key passed. The delete function in this script is generic and will work on any table provided the proper data.
+**Purpose: This php script is meant to query the database 
+and delete an existing row based on the primary_key passed. 
+The delete function in this script is generic and will work 
+on any table provided the proper data.
 */
 
 //Error Message for debugging
@@ -28,7 +31,8 @@ function delete_sql($tablename, $primary_key)
 	// Check connection
 	if ($conn->connect_error) 
 	{
-		//If there is a connection error, the script will terminate and return the error message from the database
+		//If there is a connection error, the script will 
+		//terminate and return the error message from the database
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
@@ -39,7 +43,8 @@ function delete_sql($tablename, $primary_key)
 	//First we want to ensure that the primary_key exist in the specified table.	
 	if ($result->num_rows > 0) 
 	{
-		//Once the primary_key exist, then we can proceeed to query the database and delete that row.
+		//Once the primary_key exist, then we can proceeed to query the 
+		//database and delete that row.
 		$sql_query="Delete from $tablename where primary_key=$primary_key;";
 		$conn->query($sql_query);
 		//Generating a response for a successful delete query
@@ -49,7 +54,8 @@ function delete_sql($tablename, $primary_key)
     		"status" => "success" 
     	);
     	http_response_code(200);//Good request
-    	//The function header("Content-type:application/json") sends the http json header to the browser to inform the receiver on what the kind of data to expect.
+    	/*The function header("Content-type:application/json") sends the http json
+    	header to the browser to inform the receiver on what the kind of data to expect.*/
     	header('Content-Type: application/json');
     	
 	}
@@ -61,7 +67,10 @@ function delete_sql($tablename, $primary_key)
     		"action" => "delete",
     		"status" => "error" ,
     		"user_message" => "Record to be deleted not found",
-    		"internal_message" => "delete_back.php Record for primary_key=" .$primary_key. " does not exist in ".$tablename. " table. If there's an sql error, it will follow the three dots ... " . mysqli_error($conn)
+    		"internal_message" => "delete_back.php Record for primary_key=" 
+    				.$primary_key. " does not exist in ".$tablename. " table. 
+    				If there's an sql error, it will follow the three dots ... "
+    				. mysqli_error($conn)
     	);
     	http_response_code(400); //Bad request
     	header('Content-Type: application/json');

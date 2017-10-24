@@ -3,7 +3,12 @@
 /*
 **Author: Mickey P. Somra
 **Last Upated: 10/23/2017
-**Purpose: This php script is meant to querying the database in four ways. These are inserting, deleting, editing/updating, and listing/viewing. A post request in json format will be sent containing the action(insert/delete/edit/list), table_name and the necessary fields that needs an action. Based on the action received, the script will call a function that has it's own script to query the database accordingly.
+**Purpose: This php script is meant to querying the database in four ways. 
+These are inserting, deleting, editing/updating, and listing/viewing. 
+A post request in json format will be sent containing the 
+action(insert/delete/edit/list), table_name and the necessary fields that needs an action. 
+Based on the action received, the script will call a function 
+that has it's own script to query the database accordingly.
 */
 
 //Error Message for debugging
@@ -25,7 +30,8 @@ $jsonData=$_POST["json_string"];
 //decoding the json format as an array which will be clearer to indentify the information based on key-value pair
 $jsonArray = json_decode($jsonData, true);
 
-//This array will hold field-value for a specific table in the database for insert, edit and list
+//This array will hold field-value for a specific table in 
+//the database for insert, edit and list
 $table_field_array=$jsonArray["fields"];
 
 //extracting the action post for insert/edit/delete/list
@@ -34,7 +40,8 @@ $actionPost=$jsonArray["action"];
 //extracting the tablename that will need modification/information from.
 $tablename = $jsonArray["table_name"];
 
-//This switch case will determine if the correct action is requested and make the necessary function calls.
+//This switch case will determine if the correct action is requested 
+//and make the necessary function calls.
 switch ($actionPost) 
 {
     case "insert":
@@ -76,7 +83,8 @@ switch ($actionPost)
         "internal_message" => " request_parse_back.php action is not within range."
     	);
     http_response_code(400); //bad request
-    //The function header("Content-type:application/json") sends the http json header to the browser to inform the receiver what the kind of data to expect.
+     /*The function header("Content-type:application/json") sends the http json
+    header to the browser to inform the receiver on what the kind of data to expect.*/
     header('Content-Type: application/json');
     exit(json_encode($response)); //this will terminate the script and print a json formatted message 
 }
