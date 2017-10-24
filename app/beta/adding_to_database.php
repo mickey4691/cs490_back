@@ -31,7 +31,7 @@ if ($conn->query($sql) === TRUE)
     echo "Table user_table created successfully<br/>";
     //Hard coding the first username into the database. Notice the use of single vs. double
     $data = 'INSERT INTO user_table (username, hashed_password)
-	VALUES ("mga25", "$2y$10$G2KQsQjOAFMuoIWh04pFR.MQo2fWYlqQ6qNlMS/3jZgl9BNHsJrLC")';;
+	VALUES ("mga25", "$2y$10$G2KQsQjOAFMuoIWh04pFR.MQo2fWYlqQ6qNlMS/3jZgl9BNHsJrLC");';
 
 	if (mysqli_query($conn, $data)) 
 	{

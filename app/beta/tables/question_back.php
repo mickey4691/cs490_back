@@ -26,16 +26,20 @@ if ($result = $conn->query("SHOW TABLES LIKE '".$table_name."'"))
     else //create table
     {
         $sql = "CREATE TABLE ". $table_name ." (
-        question_id INT(6) NOT NULL AUTO_INCREMENT, 
+        primary_key INT(6) NOT NULL AUTO_INCREMENT, 
         question_text VARCHAR(65535) NOT NULL, 
         func_name VARCHAR(255) NOT NULL, 
         param_names VARCHAR(255) NOT NULL,
-        PRIMARY KEY ( question_id )
+        PRIMARY KEY ( primary_key )
         )";
 
         if ($conn->query($sql) === TRUE) 
         {
             echo "Table \"" . $table_name . "\" created successfully<br/>";
+        }
+        else
+        {
+            echo mysqli_error($conn);
         }
     }
 }
