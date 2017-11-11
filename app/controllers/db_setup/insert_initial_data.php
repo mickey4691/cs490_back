@@ -11,11 +11,6 @@ $insert_array= array(
 	);
 insert_sql($table_name, $insert_array);
 
-$insert_array= array(
-	"user_name" => "admin",
-	"hash_salt" => "$2y$10\$AalMl3uW2GxHjFmn6dFQYOsyOtZ3M0K816Eyc9fwEk5uRJfqRDx/6"
-	);
-insert_sql($table_name, $insert_array);
 
 $table_name="student";
 $insert_array= array(
@@ -25,7 +20,19 @@ $insert_array= array(
 insert_sql($table_name, $insert_array);
 
 $insert_array= array(
-	"user_name" => "admin",
+	"user_name" => "studen1",
+	"hash_salt" => "$2y$10\$VQGlNLxDEgWiKP2GzVnZz.qXDUh.IPvV4OYE/y19aEZ0T6AYszMaG"
+	);
+insert_sql($table_name, $insert_array);
+
+$insert_array= array(
+	"user_name" => "studen2",
+	"hash_salt" => "$2y$10\$VQGlNLxDEgWiKP2GzVnZz.qXDUh.IPvV4OYE/y19aEZ0T6AYszMaG"
+	);
+insert_sql($table_name, $insert_array);
+
+$insert_array= array(
+	"user_name" => "studen3",
 	"hash_salt" => "$2y$10\$VQGlNLxDEgWiKP2GzVnZz.qXDUh.IPvV4OYE/y19aEZ0T6AYszMaG"
 	);
 insert_sql($table_name, $insert_array);

@@ -1,5 +1,7 @@
 <?php 
 
+//This script will drop all tables.
+
 //Error Messaging (can delete after)
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
